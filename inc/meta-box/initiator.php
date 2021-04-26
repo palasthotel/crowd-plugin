@@ -28,13 +28,15 @@ class MetaBoxInitiator {
 	function render( \WP_Post $post ) {
 		wp_enqueue_style(
 			"crowd_initiator_style",
-			$this->plugin->url . "/css/meta-box-initiator.css"
+			$this->plugin->url . "/css/meta-box-initiator.css",
+            [],
+            filemtime($this->plugin->dir . "/css/meta-box-initiator.css")
 		);
 		wp_enqueue_script(
 			"crowd_initiator_script",
 			$this->plugin->url . "/js/initiator.js",
 			array( "jquery", Plugin::HANDLE_JS_API),
-			1,
+			filemtime($this->plugin->dir . "/js/initiator.js",),
 			TRUE
 		);
 		
